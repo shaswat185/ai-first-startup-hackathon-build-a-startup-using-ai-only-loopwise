@@ -1,0 +1,82 @@
+:root {
+  --fmb-primary: #4338ca;
+  --fmb-primary-dark: #3730a3;
+  --fmb-surface: #ffffff;
+  --fmb-bg: #f7f7fb;
+  --fmb-border: #e5e7eb;
+  --fmb-text: #1f2333;
+  --fmb-text-muted: #6b7280;
+  --fmb-success: #15803d;
+  --fmb-warning: #b45309;
+  --fmb-danger: #b91c1c;
+}
+
+body {
+  background-color: var(--fmb-bg);
+  color: var(--fmb-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.fmb-navbar {
+  background-color: var(--fmb-surface);
+  border-bottom: 1px solid var(--fmb-border);
+}
+
+.fmb-brand {
+  font-weight: 700;
+  color: var(--fmb-primary);
+  letter-spacing: -0.02em;
+}
+
+.fmb-card {
+  background-color: var(--fmb-surface);
+  border: 1px solid var(--fmb-border);
+  border-radius: 8px;
+}
+
+.fmb-hero {
+  padding: 5rem 0 4rem;
+}
+
+.fmb-hero h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  max-width: 720px;
+}
+
+.fmb-muted {
+  color: var(--fmb-text-muted);
+}
+
+.btn-primary {
+  background-color: var(--fmb-primary);
+  border-color: var(--fmb-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--fmb-primary-dark);
+  border-color: var(--fmb-primary-dark);
+}
+
+.fmb-section {
+  padding: 3.5rem 0;
+}
+
+.fmb-feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background-color: #eef2ff;
+  color: var(--fmb-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fmb-footer {
+  border-top: 1px solid var(--fmb-border);
+  padding: 2rem 0;
+  color: var(--fmb-text-muted);
+  font-size: 0.9rem;
+}
