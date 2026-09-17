@@ -12,10 +12,14 @@ const costSchema = z.preprocess((val) => {
   if (typeof val === "number") return val;
   if (typeof val === "string") {
     const match = val.match(/\d[\d,]*(\.\d+)?/);
-    if (!match) return val;
+    if (!match) {
+      // No digits found at all (e.g. "Free", "No cost", "Included") - treat as zero cost
+      // rather than failing the whole diagnosis over a formatting quirk.
+      return 0;
+    }
     const cleaned = match[0].replace(/,/g, "");
     const num = Number(cleaned);
-    return Number.isNaN(num) ? val : num;
+    return Number.isNaN(num) ? 0 : num;
   }
   return val;
 }, z.number({ invalid_type_error: "Cost must be a number" }).min(0));
