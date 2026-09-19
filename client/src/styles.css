@@ -1,82 +1,345 @@
+/* ============================================================
+   FixMyBusiness — Design System
+   A business-advisor look: grounded, editorial, trustworthy.
+   Deep teal + warm ochre, paired with a considered serif/sans mix
+   instead of the generic indigo-on-white SaaS-card template.
+   ============================================================ */
+
 :root {
-  --fmb-primary: #4338ca;
-  --fmb-primary-dark: #3730a3;
-  --fmb-surface: #ffffff;
-  --fmb-bg: #f7f7fb;
-  --fmb-border: #e5e7eb;
-  --fmb-text: #1f2333;
-  --fmb-text-muted: #6b7280;
-  --fmb-success: #15803d;
-  --fmb-warning: #b45309;
-  --fmb-danger: #b91c1c;
+  /* Surfaces */
+  --fmb-bg: #F5F6F3;
+  --fmb-surface: #FFFFFF;
+  --fmb-surface-alt: #EEF0EA;
+  --fmb-border: #DCE1D8;
+  --fmb-border-strong: #C4CBC0;
+
+  /* Ink */
+  --fmb-ink: #182420;
+  --fmb-ink-muted: #5C6862;
+  --fmb-ink-faint: #8A948E;
+
+  /* Brand */
+  --fmb-primary: #1F4D45;
+  --fmb-primary-dark: #143733;
+  --fmb-primary-soft: #E4ECE9;
+  --fmb-accent: #C1852A;
+  --fmb-accent-soft: #F4E4C6;
+
+  /* Semantic */
+  --fmb-success: #2F7A4F;
+  --fmb-success-soft: #E1EFE4;
+  --fmb-warning: #B8860B;
+  --fmb-warning-soft: #F6ECD3;
+  --fmb-danger: #A8402A;
+  --fmb-danger-soft: #F5E1DC;
+
+  --fmb-font-display: "Fraunces", Georgia, serif;
+  --fmb-font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fmb-radius-sm: 6px;
+  --fmb-radius-md: 10px;
+  --fmb-radius-lg: 14px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   background-color: var(--fmb-bg);
-  color: var(--fmb-text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--fmb-ink);
+  font-family: var(--fmb-font-body);
+  font-size: 15.5px;
+  line-height: 1.55;
 }
+
+h1, h2, h3, .fmb-display {
+  font-family: var(--fmb-font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fmb-ink);
+}
+
+h4, h5, h6 {
+  font-family: var(--fmb-font-body);
+  font-weight: 600;
+  color: var(--fmb-ink);
+}
+
+a {
+  color: var(--fmb-primary);
+}
+a:hover {
+  color: var(--fmb-primary-dark);
+}
+
+/* ---------------- Navbar ---------------- */
 
 .fmb-navbar {
   background-color: var(--fmb-surface);
   border-bottom: 1px solid var(--fmb-border);
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 
 .fmb-brand {
-  font-weight: 700;
+  font-family: var(--fmb-font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
   color: var(--fmb-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
+
+.fmb-navbar .nav-link {
+  color: var(--fmb-ink-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.fmb-navbar .nav-link:hover,
+.fmb-navbar .nav-link.active {
+  color: var(--fmb-primary);
+}
+
+/* ---------------- Hero / Landing ---------------- */
+
+.fmb-hero {
+  padding: 4.5rem 0 3.5rem;
+  background:
+    radial-gradient(circle at 85% -10%, rgba(193, 133, 42, 0.10), transparent 55%),
+    var(--fmb-bg);
+}
+
+.fmb-hero h1 {
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-weight: 600;
+  max-width: 700px;
+  line-height: 1.12;
+}
+
+.fmb-muted {
+  color: var(--fmb-ink-muted);
+}
+
+.fmb-eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--fmb-primary-soft);
+  color: var(--fmb-primary-dark);
+  border: 1px solid var(--fmb-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.fmb-section {
+  padding: 3.25rem 0;
+}
+
+.fmb-feature-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--fmb-radius-sm);
+  background-color: var(--fmb-primary-soft);
+  color: var(--fmb-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fmb-footer {
+  border-top: 1px solid var(--fmb-border);
+  padding: 1.75rem 0;
+  color: var(--fmb-ink-faint);
+  font-size: 0.88rem;
+}
+
+/* ---------------- Cards ---------------- */
 
 .fmb-card {
   background-color: var(--fmb-surface);
   border: 1px solid var(--fmb-border);
-  border-radius: 8px;
+  border-radius: var(--fmb-radius-md);
+  box-shadow: none;
 }
 
-.fmb-hero {
-  padding: 5rem 0 4rem;
+/* The single elevated surface per view - used sparingly, not on every card */
+.fmb-card-featured {
+  background-color: var(--fmb-surface);
+  border: 1px solid var(--fmb-primary);
+  border-left-width: 4px;
+  border-radius: var(--fmb-radius-md);
+  box-shadow: 0 4px 18px rgba(20, 55, 51, 0.08);
 }
 
-.fmb-hero h1 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  max-width: 720px;
+.fmb-card .card-title,
+.fmb-card-featured .card-title {
+  font-weight: 600;
 }
 
-.fmb-muted {
-  color: var(--fmb-text-muted);
+/* ---------------- Buttons ---------------- */
+
+.btn {
+  border-radius: var(--fmb-radius-sm);
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 0.5rem 1.1rem;
 }
 
 .btn-primary {
   background-color: var(--fmb-primary);
   border-color: var(--fmb-primary);
 }
-
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: var(--fmb-primary-dark);
   border-color: var(--fmb-primary-dark);
 }
 
-.fmb-section {
-  padding: 3.5rem 0;
-}
-
-.fmb-feature-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background-color: #eef2ff;
+.btn-outline-primary {
   color: var(--fmb-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-color: var(--fmb-primary);
+}
+.btn-outline-primary:hover {
+  background-color: var(--fmb-primary);
+  border-color: var(--fmb-primary);
 }
 
-.fmb-footer {
+.btn-outline-secondary {
+  color: var(--fmb-ink-muted);
+  border-color: var(--fmb-border-strong);
+}
+.btn-outline-secondary:hover {
+  background-color: var(--fmb-surface-alt);
+  border-color: var(--fmb-border-strong);
+  color: var(--fmb-ink);
+}
+
+.btn-outline-danger {
+  color: var(--fmb-danger);
+  border-color: var(--fmb-danger);
+}
+.btn-outline-danger:hover {
+  background-color: var(--fmb-danger);
+  border-color: var(--fmb-danger);
+}
+
+.btn-danger {
+  background-color: var(--fmb-danger);
+  border-color: var(--fmb-danger);
+}
+
+/* ---------------- Badges (re-themed to match the palette) ---------------- */
+
+.badge {
+  font-weight: 500;
+  font-size: 0.76rem;
+  padding: 0.35em 0.65em;
+  border-radius: 5px;
+}
+
+.badge.bg-danger {
+  background-color: var(--fmb-danger-soft) !important;
+  color: var(--fmb-danger) !important;
+}
+.badge.bg-warning {
+  background-color: var(--fmb-warning-soft) !important;
+  color: var(--fmb-warning) !important;
+}
+.badge.bg-secondary {
+  background-color: var(--fmb-surface-alt) !important;
+  color: var(--fmb-ink-muted) !important;
+}
+.badge.bg-success {
+  background-color: var(--fmb-success-soft) !important;
+  color: var(--fmb-success) !important;
+}
+.badge.bg-primary {
+  background-color: var(--fmb-primary-soft) !important;
+  color: var(--fmb-primary-dark) !important;
+}
+.badge.bg-light {
+  background-color: var(--fmb-surface-alt) !important;
+  color: var(--fmb-ink-muted) !important;
+  border-color: var(--fmb-border) !important;
+}
+
+/* ---------------- Forms ---------------- */
+
+.form-control,
+.form-select {
+  border-color: var(--fmb-border-strong);
+  border-radius: var(--fmb-radius-sm);
+  font-size: 0.95rem;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--fmb-primary);
+  box-shadow: 0 0 0 0.2rem rgba(31, 77, 69, 0.12);
+}
+.form-label {
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--fmb-ink);
+}
+
+/* ---------------- Tabs (used to reduce dense pages to focused views) ---------------- */
+
+.fmb-tabs .nav-link {
+  color: var(--fmb-ink-muted);
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 0.65rem 0.25rem;
+  margin-right: 1.5rem;
+}
+.fmb-tabs .nav-link.active {
+  color: var(--fmb-primary);
+  border-bottom-color: var(--fmb-primary);
+  background: none;
+}
+.fmb-tabs {
+  border-bottom: 1px solid var(--fmb-border);
+}
+
+/* ---------------- Progress ---------------- */
+
+.progress {
+  background-color: var(--fmb-surface-alt);
+  border-radius: 999px;
+  height: 8px;
+}
+.progress-bar {
+  background-color: var(--fmb-primary);
+}
+.progress-bar.bg-success {
+  background-color: var(--fmb-success) !important;
+}
+
+/* ---------------- Misc utility ---------------- */
+
+.fmb-divider {
   border-top: 1px solid var(--fmb-border);
-  padding: 2rem 0;
-  color: var(--fmb-text-muted);
-  font-size: 0.9rem;
+}
+
+.fmb-kicker {
+  color: var(--fmb-accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.fmb-confidence-High {
+  background-color: var(--fmb-success-soft) !important;
+  color: var(--fmb-success) !important;
+}
+.fmb-confidence-Medium {
+  background-color: var(--fmb-warning-soft) !important;
+  color: var(--fmb-warning) !important;
+}
+.fmb-confidence-Low {
+  background-color: var(--fmb-surface-alt) !important;
+  color: var(--fmb-ink-muted) !important;
 }

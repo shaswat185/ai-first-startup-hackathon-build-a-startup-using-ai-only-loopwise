@@ -51,10 +51,10 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="fmb-hero">
         <Container>
-          <Badge bg="light" text="dark" className="border mb-3 px-3 py-2">
+          <span className="fmb-eyebrow-badge mb-3">
             AI-powered business advisor
-          </Badge>
-          <h1 className="display-5">
+          </span>
+          <h1 className="mt-3">
             Understand Your Business Problems. Take the Right Action.
           </h1>
           <p className="fmb-muted fs-5 mt-3" style={{ maxWidth: 640 }}>
