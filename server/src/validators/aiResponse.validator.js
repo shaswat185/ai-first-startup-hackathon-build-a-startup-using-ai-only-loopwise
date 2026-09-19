@@ -24,6 +24,22 @@ const costSchema = z.preprocess((val) => {
   return val;
 }, z.number({ invalid_type_error: "Cost must be a number" }).min(0));
 
+/**
+ * Models sometimes send the action-plan "day" as a string ("1") instead of
+ * a number, the same way they occasionally do for costs. Coerce any
+ * numeric-looking string into a real integer before validating the range.
+ */
+const daySchema = z.preprocess((val) => {
+  if (typeof val === "number") return val;
+  if (typeof val === "string") {
+    const match = val.match(/\d+/);
+    if (!match) return val;
+    const num = Number(match[0]);
+    return Number.isNaN(num) ? val : num;
+  }
+  return val;
+}, z.number({ invalid_type_error: "Day must be a number" }).int().min(1).max(7));
+
 const possibleCauseSchema = z.object({
   cause: z.string().min(1),
   reason: z.string().min(1),
@@ -45,7 +61,7 @@ const followUpQuestionSchema = z.object({
 
 const actionPlanTaskSchema = z.object({
   id: z.string().min(1),
-  day: z.number().int().min(1).max(7),
+  day: daySchema,
   title: z.string().min(1),
   description: z.string().min(1),
   priority: priorityEnum,
